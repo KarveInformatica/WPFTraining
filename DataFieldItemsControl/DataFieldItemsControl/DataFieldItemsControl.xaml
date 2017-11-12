@@ -22,7 +22,7 @@
                                          LabelTextWidth="50"
                                          LabelVisible="True"
                                          IsReadOnly="False"
-                                         DataFieldHeight="20"
+                                         DataFieldHeight="40"
                                          DataSourcePath="{Binding Path=DataSourcePath, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
                                          DataSource="{Binding Path=DataSource, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                          >
