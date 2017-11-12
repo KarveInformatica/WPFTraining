@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Input;
+
 
 namespace TestAppDataFieldItemsApp1
 {
@@ -15,7 +15,8 @@ namespace TestAppDataFieldItemsApp1
     {
         private object _source;
         private IEnumerable<string> _labels;
-
+        private DelegateCommand<object> _changedItem;
+        
         public ViewModel()
        {
             Model.Book book = new Model.Book();
@@ -24,7 +25,7 @@ namespace TestAppDataFieldItemsApp1
             book.Name = "Il Fu mattia pascal";
             book.Rate = 9;
             SourceName = book;
-            ChangedItem = new DelegateCommand<object>(modelCommand);
+            _changedItem = new DelegateCommand<object>(modelCommand);
             List<string> list = new List<string>();
             list.Add("Autor");
             list.Add("ISBN");
@@ -46,6 +47,14 @@ namespace TestAppDataFieldItemsApp1
             get { return _source; }
             set { _source = value; RaisePropertyChanged(); }
         }
-        public ICommand ChangedItem { set; get; }
+        public DelegateCommand<object> ChangedItem {
+            set
+            {
+                _changedItem = value;
+            }
+            get {
+                return _changedItem;
+            }
+        }
     }
 }

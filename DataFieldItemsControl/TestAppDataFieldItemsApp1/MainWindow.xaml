@@ -16,14 +16,10 @@
         </ResourceDictionary>
     </Window.Resources>
     <Grid DataContext="{Binding Source={StaticResource BaseViewModel}}">
-       
+
         <karve:DataFieldItemsControl DataSource="{Binding Path=SourceName}" 
-                                     Localization="{Binding Path=Labels}">
-            <i:Interaction.Triggers>
-                <i:EventTrigger EventName="DataFieldChanged">
-                    <mvvm:InvokeCommandAction Command="{Binding ChangedItem, PresentationTraceSources.TraceLevel=High}" TriggerParameterPath="ChangedValuesObjects"/>
-                </i:EventTrigger>
-            </i:Interaction.Triggers>
+                                     Localization="{Binding Path=Labels}"
+                                     ChangeActionCommand="{Binding ChangedItem, PresentationTraceSources.TraceLevel=High}">
 
         </karve:DataFieldItemsControl>
         

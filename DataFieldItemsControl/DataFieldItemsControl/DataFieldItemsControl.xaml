@@ -26,6 +26,12 @@
                                          DataSourcePath="{Binding Path=DataSourcePath, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
                                          DataSource="{Binding Path=DataSource, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                          >
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="DataFieldChanged">
+                                <mvvm:InvokeCommandAction Command="{Binding ChangedItem, PresentationTraceSources.TraceLevel=High}" TriggerParameterPath="ChangedValuesObjects"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+
                     </karveControls:DataField>
                 </DataTemplate>
                 

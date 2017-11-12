@@ -1,9 +1,12 @@
 ﻿using KarveControls;
+using Prism.Commands;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
+using System;
 
 namespace DataFieldItemsControl
 {
@@ -13,7 +16,27 @@ namespace DataFieldItemsControl
     /// </summary>
     public partial class DataFieldItemsControl : UserControl
     {
+        private DelegateCommand<object> _localCommand;
 
+        public static DependencyProperty ChangeActionDependencyProperty
+        = DependencyProperty.Register(
+            "ChangeActionCommand",
+            typeof(ICommand),
+            typeof(DataFieldItemsControl));
+        /// <summary>
+        ///  localization of strings.
+        /// </summary>
+        public ICommand ChangeActionCommand
+        {
+            get { return (ICommand)GetValue(ChangeActionDependencyProperty); }
+            set { SetValue(ChangeActionDependencyProperty, (ICommand)value); }
+        }
+        private void OnChangeField(object obj)
+        {
+            ICommand value = ChangeActionCommand;
+            if (value!=null)
+            value.Execute(obj);
+        }
 
         public static DependencyProperty LabelEnumerable = DependencyProperty.Register("Localization",
             typeof(IEnumerable<string>),
@@ -40,6 +63,10 @@ namespace DataFieldItemsControl
                     {
                         listOfObjects[i].LabelText = localizationStrings[i];
                     }
+                }
+                for (int i = 0; i < listOfObjects.Count; i++)
+                {
+                    listOfObjects[i].ChangedItem = _localCommand;
                 }
                 this.TextBoxCollection.ItemsSource = listOfObjects;
             }
@@ -92,6 +119,10 @@ namespace DataFieldItemsControl
             IList<string> localizationStrings = Localization as List<string>;
             int secondCount = localizationStrings.Count<string>();
             // i am sure that the component filler gives us a list of objects.
+            for (int i = 0; i < count; i++)
+            {
+                listOfObjects[i].ChangedItem = _localCommand;
+            }
             if (count == secondCount)
             {
                 for (int i = 0; i < count; i++)
@@ -101,9 +132,11 @@ namespace DataFieldItemsControl
             }
             this.TextBoxCollection.ItemsSource = listOfObjects;
         }
-
+       
+           
         public DataFieldItemsControl()
         {
+            _localCommand = new DelegateCommand<object>(OnChangeField);
             InitializeComponent();
         }
     }

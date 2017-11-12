@@ -1,4 +1,5 @@
-﻿using Prism.Mvvm;
+﻿using Prism.Commands;
+using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,15 +16,16 @@ namespace KarveControls
     /// <summary>
     ///  Class for unpacking the object to a value.
     /// </summary>
-    public class UiMetaObject: BindableBase
+    public class UiMetaObject : BindableBase
     {
         private string labelText = string.Empty;
+        public DelegateCommand<object> ChangedItem { set; get; }
         // source
         public object DataSource { set; get; }
         // path of the object
         public string DataSourcePath { set; get; }
         //
-        public string LabelText { set { labelText = value; RaisePropertyChanged(); }
+        public string LabelText { set { labelText = value; }
                                   get { return labelText; }
         }
     }
