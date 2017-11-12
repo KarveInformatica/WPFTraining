@@ -1,0 +1,8 @@
+C:\Users\giorg\documents\visual studio 2017\Projects\DataFieldItemsControl\Testing\bin\Debug\Testing.dll
+C:\Users\giorg\documents\visual studio 2017\Projects\DataFieldItemsControl\Testing\bin\Debug\Testing.pdb
+C:\Users\giorg\documents\visual studio 2017\Projects\DataFieldItemsControl\Testing\bin\Debug\nunit.framework.dll
+C:\Users\giorg\documents\visual studio 2017\Projects\DataFieldItemsControl\Testing\bin\Debug\nunit.framework.xml
+C:\Users\giorg\documents\visual studio 2017\Projects\DataFieldItemsControl\Testing\obj\Debug\Testing.csprojResolveAssemblyReference.cache
+C:\Users\giorg\documents\visual studio 2017\Projects\DataFieldItemsControl\Testing\obj\Debug\Testing.csproj.CoreCompileInputs.cache
+C:\Users\giorg\documents\visual studio 2017\Projects\DataFieldItemsControl\Testing\obj\Debug\Testing.dll
+C:\Users\giorg\documents\visual studio 2017\Projects\DataFieldItemsControl\Testing\obj\Debug\Testing.pdb
